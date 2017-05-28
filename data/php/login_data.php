@@ -9,18 +9,8 @@
 	if (!$db_connection) {
 		die('Could not connect: ' . mysql_error());
 	}
-	// if (mysqli_connect_errno()) {
-	//     printf("Connect failed: %s\n", mysqli_connect_error());
-	//     exit();
-	// }
 
 	$data = json_decode(file_get_contents('php://input'));
-
-	//print $data;
-
-	// if($username=="" || $password=="") {
-	// 	die( "Error: Missing fields are required!" );
-	// }
 
 
 	$query = "SELECT Username, Password FROM Users WHERE Username = '$data->username'";

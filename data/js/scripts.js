@@ -6,6 +6,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.starrating = 0;
 	$scope.currentuser ="Welcome, Guest!";
 	$scope.errormessage ="";
+	$scope.buildingtext = "";
 	$scope.loginVisible = true;
 	$scope.profileVisible = false;
 	$scope.bathroomsVisible = false;
@@ -57,22 +58,38 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		//console.log("this");
 		//console.log(bathroom);
 		
-		var arr = [];
+		// var arr = [];
 
-		for(var i=1; i<=floors; i++) {
-			var input = {'building': building,'floors': i};
+		// for(var i=1; i<=floors; i++) {
+		// 	var input = {'building': building,'floors': i};
 		  	
-		  	$http.post('data//php//bathroom_data.php',input).then(function(json) {
-		 		// $scope.bathroomdata = json.data;
-		 		arr.push(json.data);
-		 		console.log(json);
-			});
-		}
-		$scope.bathroomdata = arr;
-		// $http.post('data//php//bathroom_data.php',input).then(function(json) {
-		//  	$scope.bathroomdata = json.data;
-		//  	console.log(json);
-		// });
+		//   	$http.post('data//php//bathroom_data.php',input).then(function(json) {
+		//  		// $scope.bathroomdata = json.data;
+		//  		arr.push(json.data);
+		//  		console.log(json);
+		// 	});
+		// }
+		// $scope.bathroomdata = arr;
+		var buildingname = "";
+		switch(building) {
+            case "kelley":
+		        buildingname = "Kelley Engineering Center";
+		        break;
+		    case "linq":
+		        buildingname = "Learning Innovation Center";
+		        break;
+		    case "library":
+		        buildingname = "Valley Library";
+		        break;
+        }
+
+		var input = {'building': buildingname,'floors': floors};
+		$http.post('data//php//bathroom_data.php',input).then(function(json) {
+
+		 	$scope.bathroomdata = json.data;
+		 	console.log(json);
+		});
+		$scope.buildingtext = buildingname;
 		$scope.bathroomsVisible = true;
 		$location.path('/bathrooms');
 	}

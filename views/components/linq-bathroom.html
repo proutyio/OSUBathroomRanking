@@ -1,0 +1,90 @@
+<div class="text-center" style="text-align:center;display:block;">
+	<img src="img/buildings/linq.jpg" class="img-responsive" alt="" style="text-align:center;display:block;">
+</div>
+
+<div class="well" style="" >
+	<div class="container">
+		<div class="row" style="">
+			<div class="col-sm-12" style="margin-top:2%;">
+				<h3 class="">Floor 1:</h3>
+				<div class="col-sm-1" style="border:1px solid rgba(0,0,0,.3);margin-bottom:1%;"></div>
+				<div ng-repeat="x in bathroomdata[0]">
+					<table class="table table-responsive table-hover">
+					    <thead>
+							<tr>
+								<th>User</th>
+								<th>Date Made</th>
+								<th>Rating</th>
+								<th>Comment</th>
+							</tr>
+					    </thead>
+					    <tbody>
+							<tr>
+								<td>{{x.Username}}</td>
+								<td>{{x.DateMade}}</td>
+								<td>{{x.Rating}}</td>
+								<td>{{x.Comment}}</td>
+							</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div class="col-sm-12" style="margin-top:2%;">
+				<h3 class="">Floor 2:</h3>
+				<div class="col-sm-1" style="border:1px solid rgba(0,0,0,.3);margin-bottom:1%;"></div>
+				<div ng-repeat="x in bathroomdata[1]">
+					<table class="table table-hover table-responsive">
+					    <thead>
+							<tr>
+								<th>User</th>
+								<th>Date Made</th>
+								<th>Rating</th>
+								<th>Comment</th>
+							</tr>
+					    </thead>
+					    <tbody>
+							<tr>
+								<td>{{x.Username}}</td>
+								<td>{{x.DateMade}}</td>
+								<td>{{x.Rating}}</td>
+								<td>{{x.Comment}}</td>
+							</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="col-sm-12" style="margin-top:2%;">
+				<h3 class="">Floor 3:</h3>
+				<div class="col-sm-1" style="border:1px solid rgba(0,0,0,.3);margin-bottom:1%;"></div>
+				<div ng-repeat="x in bathroomdata[2]">
+					<table class="table table-hover table-responsive">
+					    <thead>
+							<tr>
+								<th>User</th>
+								<th>Date Made</th>
+								<th>Rating</th>
+								<th>Comment</th>
+							</tr>
+					    </thead>
+					    <tbody>
+							<tr>
+								<td>{{x.Username}}</td>
+								<td>{{x.DateMade}}</td>
+								<td>{{x.Rating}}</td>
+								<td>{{x.Comment}}</td>
+							</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="col-sm-12" style="margin-top:2%;">
+				<h3 class="">Floor 4:</h3>
+				<div class="col-sm-1" style="border:1px solid rgba(0,0,0,.3);"></div>
+			</div>
+			
+		</div>
+	</div>
+</div>
