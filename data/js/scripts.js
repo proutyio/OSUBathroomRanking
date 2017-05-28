@@ -31,9 +31,37 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 					$scope.isLoggedIn = true;
 					$scope.profileVisible = true;
 				}
-				else { $scope.errormessage = "Invalid Username or Password"; }
+				else { $scope.errormessage = "Error: Invalid Username or Password"; }
 			}
 		});
+	}
+
+
+	$scope.registerUser = function(input) {
+		$scope.errormessage="";
+		console.log(input);
+		if(typeof input === "undefined") { $scope.errormessage ="Error: Missing fields required"; }
+		else {
+			if(input['username']===""||input['password']===""||input['email']===""||input['firstname']===""||input['lastname']==="") {
+				$scope.errormessage ="Error: Missing fields required";
+			}
+			else {
+				$promise = $http.post('data//php//register_data.php', input).then(function(json) {
+					if(json) {
+						$scope.currentuser = input['username'];
+						var user = {'username': input['username']};
+						$scope.loadProfileData(user);
+						$scope.loginVisible = false;
+						$scope.isLoggedIn = true;
+						$scope.profileVisible = true;
+						$location.path('/profile');
+					}
+					else {
+						$scope.errormessage = "Error: Query Failed - Username might already exist";
+					}
+				});
+			}
+		}
 	}
 
 
@@ -50,10 +78,10 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 
 
 	$scope.submitComment = function(building, floors, comment) {
-		console.log($scope.currentuser);
-		console.log($scope.bathroomID);
-		console.log(comment);
-		console.log($scope.starrating);
+		// console.log($scope.currentuser);
+		// console.log($scope.bathroomID);
+		// console.log(comment);
+		// console.log($scope.starrating);
 		var input = {'username':$scope.currentuser,'bathroomid':$scope.bathroomID,'comment':comment,'rating':$scope.starrating};
 		
 		$http.post('data//php//submit_data.php',input).then(function(json) {});
@@ -89,7 +117,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		var input = {'building': buildingname};
 		 $http.post('data//php//dropdown_data.php',input).then(function(json) { 
 		 	$scope.dropdowndata = json.data;
-		 	console.log(json);
+		 	//console.log(json);
 		 });
 	}
 
