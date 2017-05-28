@@ -10,9 +10,8 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.loginVisible = true;
 	$scope.profileVisible = false;
 	$scope.bathroomsVisible = false;
-
-
-	$scope.changeView = function(view){ $location.path(view); }
+	$scope.selectedDropdown = "";
+	$scope.bathroomID = "";
 
 	
 	$scope.loginUser = function(input) {
@@ -29,6 +28,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 					$scope.currentuser = json.data.Username;
 					$location.path('/profile');
 					$scope.loginVisible = false;
+					$scope.isLoggedIn = true;
 					$scope.profileVisible = true;
 				}
 				else { $scope.errormessage = "Invalid Username or Password"; }
@@ -36,15 +36,30 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		});
 	}
 
-	
+
 
 	$scope.logoutUser = function() { 
 		$scope.loginVisible = true;
+		$scope.isLoggedIn = false;
 		$scope.profileVisible = false;
 		$scope.currentuser="Welcome, Guest!";
 		$scope.loadProfileData("");
 		$location.path('/');
 	}
+
+
+
+	$scope.submitComment = function(building, floors, comment) {
+		console.log($scope.currentuser);
+		console.log($scope.bathroomID);
+		console.log(comment);
+		console.log($scope.starrating);
+		var input = {'username':$scope.currentuser,'bathroomid':$scope.bathroomID,'comment':comment,'rating':$scope.starrating};
+		
+		$http.post('data//php//submit_data.php',input).then(function(json) {});
+		$scope.loadBathroomData(building,floors); 
+	}
+
 
 
 	$scope.loadProfileData = function(user) {
@@ -54,29 +69,12 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	}
 
 
-	$scope.loadBathroomData = function(building, floors) {
-		//console.log("this");
-		//console.log(bathroom);
-		
-		// var arr = [];
 
-		// for(var i=1; i<=floors; i++) {
-		// 	var input = {'building': building,'floors': i};
-		  	
-		//   	$http.post('data//php//bathroom_data.php',input).then(function(json) {
-		//  		// $scope.bathroomdata = json.data;
-		//  		arr.push(json.data);
-		//  		console.log(json);
-		// 	});
-		// }
-		// $scope.bathroomdata = arr;
-	
+	$scope.loadBathroomData = function(building, floors) {
 		var buildingname = $scope.switchBuildingName(building);
 		var input = {'building': buildingname,'floors': floors};
 		$http.post('data//php//bathroom_data.php',input).then(function(json) {
-
 		 	$scope.bathroomdata = json.data;
-		 	//console.log(json);
 		});
 		$scope.loadDropdownData(building);
 		$scope.buildingtext = buildingname;
@@ -90,8 +88,15 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		var buildingname = $scope.switchBuildingName(building);
 		var input = {'building': buildingname};
 		 $http.post('data//php//dropdown_data.php',input).then(function(json) { 
+		 	$scope.dropdowndata = json.data;
 		 	console.log(json);
 		 });
+	}
+
+
+
+	$scope.getID = function(id) {
+		$scope.bathroomID = id;
 	}
 
 
