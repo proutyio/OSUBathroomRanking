@@ -70,6 +70,33 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		// 	});
 		// }
 		// $scope.bathroomdata = arr;
+	
+		var buildingname = $scope.switchBuildingName(building);
+		var input = {'building': buildingname,'floors': floors};
+		$http.post('data//php//bathroom_data.php',input).then(function(json) {
+
+		 	$scope.bathroomdata = json.data;
+		 	//console.log(json);
+		});
+		$scope.loadDropdownData(building);
+		$scope.buildingtext = buildingname;
+		$scope.bathroomsVisible = true;
+		$location.path('/bathrooms');
+	}
+
+
+
+	$scope.loadDropdownData = function(building) {
+		var buildingname = $scope.switchBuildingName(building);
+		var input = {'building': buildingname};
+		 $http.post('data//php//dropdown_data.php',input).then(function(json) { 
+		 	console.log(json);
+		 });
+	}
+
+
+
+	$scope.switchBuildingName = function(building) {
 		var buildingname = "";
 		switch(building) {
             case "kelley":
@@ -82,18 +109,8 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		        buildingname = "Valley Library";
 		        break;
         }
-
-		var input = {'building': buildingname,'floors': floors};
-		$http.post('data//php//bathroom_data.php',input).then(function(json) {
-
-		 	$scope.bathroomdata = json.data;
-		 	console.log(json);
-		});
-		$scope.buildingtext = buildingname;
-		$scope.bathroomsVisible = true;
-		$location.path('/bathrooms');
+       	return buildingname;
 	}
-
 
 
 	/* *** SIDE NAV HIGHLIGHTING *** */
