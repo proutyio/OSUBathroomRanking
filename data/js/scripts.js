@@ -42,7 +42,9 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		console.log(input);
 		if(typeof input === "undefined") { $scope.errormessage ="Error: Missing fields required"; }
 		else {
-			if(input['username']===""||input['password']===""||input['email']===""||input['firstname']===""||input['lastname']==="") {
+			if( (input['username']===""||input['password']===""||input['email']===""||input['firstname']===""||input['lastname']==="") ||
+			  (typeof input['username']==="undefined"||typeof input['password']==="undefined"||typeof input['email']==="undefined"||
+			  	typeof input['firstname']==="undefined"||typeof input['lastname']==="undefined") ) {
 				$scope.errormessage ="Error: Missing fields required";
 			}
 			else {
