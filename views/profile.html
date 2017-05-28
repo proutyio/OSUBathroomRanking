@@ -1,0 +1,53 @@
+{{highlight_profile()}}
+
+<h2 style="margin-top:;">&nbsp;&nbsp;Profile:</h2>
+<!-- <div class="col-sm-3" style="border:1px solid rgba(0,0,0,.5);margin-bottom:;"></div> -->
+
+
+
+<div class="container">
+
+	<div class="row" ng-show="!profileVisible" >
+		<div class="col-sm-12" style="margin-top:5%;">
+			<h3>Please Login or Register</h3>
+		</div>
+	</div>
+
+
+	<div class="row text-center" ng-show="profileVisible" >
+		<div class="col-sm-12"><i class="fa fa-user-circle-o fa-5x" aria-hidden="true" style=""></i></div>
+		<div class="col-sm-12"><h4>Username: &nbsp;&nbsp;{{profiledata[0].Username}}</h4></div>
+		<div class="col-sm-12"><h4>Email: &nbsp;&nbsp;{{profiledata[0].EmailAddress}}</h4></div>
+		<div class="col-sm-12"><h4>Real name: &nbsp;&nbsp;{{profiledata[0].FirstName}} {{profiledata[0].LastName}}</h4></div>
+	</div>
+
+	<div class="row" ng-show="profileVisible">
+		<h3><i class="fa fa-comments-o" aria-hidden="true"></i> Comments:</h3>
+		<div class="col-sm-3" style="border:1px solid rgba(0,0,0,.5);margin-bottom:1%;"></div>
+		
+		<div class="col-sm-12" style="margin-top:1%;" ng-repeat="x in profiledata">
+			<h4>{{x.BuildingName}}</h4>
+			<table class="table table-responsive table-hover">
+				<thead>
+					<tr>
+						<th>DateMade</th>
+						<th>Bathroom Description</th>
+						<th>Rating</th>
+						<th>Comment</th>
+						<th>Floor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ x.DateMade }}</td>
+	    				<td>{{ x.BathroomID }}</td>
+	    				<td>{{ x.Rating }}</td>
+	    				<td>{{ x.Comment }}</td>
+	    				<td>{{ x.FloorNumber }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>

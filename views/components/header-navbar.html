@@ -1,0 +1,29 @@
+<header>
+	<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#DC4405;">
+		<div class="container-fluid">
+	    	<div class="navbar-header">
+	      		<a class="navbar-brand" href="#">
+	      		</a>
+	    	</div>
+		    <a class="navbar-brand" href="">
+		    	<i class="fa fa-user-circle fa-1x" aria-hidden="true"></i>
+		    	&nbsp;<b>{{currentuser}}</b>
+		    </a>
+
+			<login-navbar ng-show="loginVisible"></login-navbar>
+			<logout-navbar ng-show="!loginVisible"></logout-navbar>
+		
+		</div>
+	</nav>
+
+
+
+	<nav class="navbar navbar-default navbar-static-top" style="background-color:;min-height:0px !important;">
+		<div class="container-fluid">
+	    	<div class="navbar-header">
+	    	</div>
+	    	<a class="navbar-brand" href="">
+	    	</a>
+		</div>
+	</nav>
+</header>

@@ -1,0 +1,54 @@
+{{highlight_bathroom()}}
+
+<h2 style="margin-top:;">&nbsp;&nbsp;Bathrooms:</h2>
+<!-- <div class="col-sm-3" style="border:1px solid rgba(0,0,0,.5);margin-bottom:;"></div> -->
+
+
+
+<div class="container" ng-show="!bathroomsVisible">
+	<div class="row" style="">
+		<div class="col-sm-12" style="margin-top:5%;">
+		<h3>Please select a Building</h3>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="well" style="" ng-show="bathroomsVisible" ng-repeat="x in bathroomdata">
+	<div class="container">
+		<div class="row" style="">
+
+			<div class="col-sm-12" style="margin-top:2%;">
+				<h2 class="">Floor 1:</h2>
+				<div class="col-sm-3" style="border:1px solid rgba(0,0,0,.5)"></div>
+				<h1>{{x[0]}}</h1>
+			</div>
+			<div class="col-sm-12">
+				<!-- <comment-form><comment-form> -->
+			</div>
+
+
+
+			<div class="col-sm-12" style="margin-top:2%;">
+				<h2 class="">Floor 2:</h2>
+				<div class="col-sm-3" style="border:1px solid rgba(0,0,0,.5)"></div>
+			</div>
+
+
+
+			<div class="col-sm-12" style="margin-top:2%;">
+				<h2 class="">Floor 3:</h2>
+				<div class="col-sm-3" style="border:1px solid rgba(0,0,0,.5)"></div>
+			</div>
+
+
+
+			<div class="col-sm-12" style="margin-top:2%;">
+				<h2 class="">Floor 4:</h2>
+				<div class="col-sm-3" style="border:1px solid rgba(0,0,0,.5)"></div>
+			</div>
+			
+		</div>
+	</div>
+</div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html ng-app="MyApp">
+	<head>
+	    <title>Bathroom Ranking</title>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+		<link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="css/jk-rating-stars.min.css" rel="stylesheet" type="text/css" />
+		<link href="css/stylesheet.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.js"></script>
+		<script src="data/js/jk-rating-stars.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+		
+		<script src="data/js/app.js"></script>
+		<script src='data/js/scripts.js'></script>
+	</head>
+
+	<body ng-controller="controller">
+
+		<!-- TOP NAV BAR -->
+		<header-navbar></header-navbar>
+
+
+		<div class="container">
+			<div class="row">
+
+
+				<!-- SIDE PANEL --> 
+			    <div class="col-md-2 no-float" id="sidepaneldiv" style="background-color:#373737;border-right-style:solid;">
+			   		<div  class="no-float" style="">
+				        <a id="hidebutton" data-toggle="collapse" data-target="#collapseside" ng-click="hideButton()" style="margin-bottom:0%;display:none;">
+				        	<i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
+				        </a>
+			        </div>
+					
+			    	<div id="collapseside" class="collapse in" style="margin-top:35px;">
+			        	<side-navbar></side-navbar>
+			        </div>
+			    </div>
+
+
+			    <!-- MAIN CONTENT -->
+			    <div class="col-md-10 no-float" id="maincontentdiv" style="background-color:;">
+			    	<div id="mywell" class="" style="margin-top:2em;margin-left:2em;margin-right:2em;background-color:#FFF;height:;">
+		        		<ng-view></ng-view>
+		        	</div>
+
+			    </div>
+			</div>
+		</div>
+		
+		<my-footer></my-footer>
+	</body>
+</html>
