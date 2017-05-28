@@ -1,64 +1,78 @@
 
 {{highlight_building()}}
 
-
-<h2>Buildings:</h2>
-<div style="margin-bottom:2%;"></div>
+<div class="text-center" style="margin-top:2%;">
+	<span><i class="fa fa-building-o fa-5x" style="color:#DC4405;" aria-hidden="true"></i></span>
+	<h2>Select a Building:</h2>
+</div>
+<div style="margin-bottom:4%;"></div>
 <!-- <div class="col-sm-3" style="border:1px solid rgba(0,0,0,.5);margin-bottom:2%;"></div> -->
 
 
 <!-- <div class="well" style="background-color:#fff;border:;"> -->
 <div class="container">
 
-
-		<div class="col-sm-6" style="background-color:;">
-			<div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;" ng-click="loadBathroomData('linq', 3)">
-				<div class="relative">
-					<img src="img/buildings/linq.jpg" class="img-responsive" alt="" ng-mouseenter="linqEnter()" ng-mouseleave="linqExit()">
-					<a class="absolute-text" id="linqtext" ng-mouseenter="linqEnter()" ng-mouseleave="linqExit()" >Learning Innovation Center</a>
+		<div class="row">
+			<div class="col-sm-12" style="padding-left:100px;padding-right:100px;padding-bottom:20px;">
+				<div class="col-sm-6" style="background-color:;" ng-click="loadBathroomData('linq', 3)">
+					<!-- <div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;" ng-click="loadBathroomData('linq', 3)"> -->
+						<div class="relative">
+							<img src="img/buildings/linq.jpg" class="img-responsive text-center" alt="" ng-mouseenter="linqEnter()" ng-mouseleave="linqExit()" style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+							<a class="absolute-text text-center" id="linqtext" ng-mouseenter="linqEnter()" ng-mouseleave="linqExit()" >Learning Innovation Center</a>
+						</div>
+					<!-- </div> -->
 				</div>
-			</div>
-		</div>
 
-		
-		<div class="col-sm-6" style="background-color:;">
-			<div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;" ng-click="loadBathroomData('library', 5)">
-				<div class="relative">
-			  		<img src="img/buildings/library.jpg" class="img-responsive" alt="" ng-mouseenter="libraryEnter()" ng-mouseleave="libraryExit()">
-			  		<a class="absolute-text text-center" id="librarytext" ng-mouseenter="libraryEnter()" ng-mouseleave="libraryExit()">Valley Library</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-6" style="background-color:;">
-			<div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;">
-				<div class="relative">
-					<img src="img/buildings/austinhall.jpg" class="img-responsive" alt="" ng-mouseenter="austinEnter()" ng-mouseleave="austinExit()">
-					<a class="absolute-text text-center" id="austintext" ng-mouseenter="austinEnter()" ng-mouseleave="austinExit()">Austin Hall</a>
+				
+				<div class="col-sm-6" style="background-color:;">
+					<!-- <div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;" ng-click="loadBathroomData('library', 5)"> -->
+						<div class="relative">
+					  		<img src="img/buildings/library.jpg" class="img-responsive text-center" alt="" ng-mouseenter="libraryEnter()" ng-mouseleave="libraryExit()" style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+					  		<a class="absolute-text text-center" id="librarytext" ng-mouseenter="libraryEnter()" ng-mouseleave="libraryExit()">Valley Library</a>
+						</div>
+					<!-- </div> -->
 				</div>
 			</div>
 		</div>
 
 
+		<div class="row">
+			<div class="col-sm-12" style="padding-left:100px;padding-right:100px;padding-bottom:20px;">
+				<div class="col-sm-6" style="background-color:;">
+					<!-- <div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;"> -->
+						<div class="relative">
+							<img src="img/buildings/austinhall.jpg" class="img-responsive text-center" alt="" ng-mouseenter="austinEnter()" ng-mouseleave="austinExit()" style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+							<a class="absolute-text text-center" id="austintext" ng-mouseenter="austinEnter()" ng-mouseleave="austinExit()">Austin Hall</a>
+						</div>
+					<!-- </div> -->
+				</div>
 
-		<div class="col-sm-6" style="background-color:;">
-			<div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;">
-				<div class="relative">
-					<img src="img/buildings/mu.jpg" class="img-responsive" alt="" ng-mouseenter="muEnter()" ng-mouseleave="muExit()">
-					<a class="absolute-text text-center" id="mutext" ng-mouseenter="muEnter()" ng-mouseleave="muExit()">Memorial Union</a>
+				<div class="col-sm-6" style="background-color:;">
+					<!-- <div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;"> -->
+						<div class="relative">
+							<img src="img/buildings/mu.jpg" class="img-responsive text-center" alt="" ng-mouseenter="muEnter()" ng-mouseleave="muExit()" style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+							<a class="absolute-text text-center" id="mutext" ng-mouseenter="muEnter()" ng-mouseleave="muExit()">Memorial Union</a>
+						</div>
+					<!-- </div> -->
 				</div>
 			</div>
 		</div>
 
 
-		<div class="col-sm-6" style="background-color:;">
-			<div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;">
-				<div class="relative">
-					<img src="img/buildings/intobuilding.jpg" class="img-responsive" alt="" ng-mouseenter="intoEnter()" ng-mouseleave="intoExit()">
-					<a class="absolute-text text-center" id="intotext" ng-mouseenter="intoEnter()" ng-mouseleave="intoExit()">INTO</a>
+
+
+		<div class="row">
+			<div class="col-sm-12" style="padding-left:100px;padding-right:100px;padding-bottom:20px;">
+				<div class="col-sm-6" style="background-color:;">
+					<!-- <div class="jumbotron" style="height:100%;width:100%;box-shadow:none;background-color:#fff;border:none;padding:0px;"> -->
+						<div class="relative">
+							<img src="img/buildings/intobuilding.jpg" class="img-responsive text-center" alt="" ng-mouseenter="intoEnter()" ng-mouseleave="intoExit()" style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+							<a class="absolute-text text-center" id="intotext" ng-mouseenter="intoEnter()" ng-mouseleave="intoExit()">INTO</a>
+						</div>
+					<!-- </div> -->
 				</div>
 			</div>
 		</div>
-	
+
 
 </div>
