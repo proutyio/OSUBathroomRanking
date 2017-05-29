@@ -21,6 +21,6 @@
 	//   $data[] = $row;
 	// }
  //    print json_encode($data);
-	mysql_free_result($result);
+	//mysql_free_result($result);
 	mysqli_close($db_connection);
 ?>

@@ -11,8 +11,10 @@
 	$data = array();
 
 	for ($x = 1; $x <= $input->floors; $x++) {
-		// $query = "SELECT u.Username, c.Comment, r.Rating, c.DateMade FROM Users u JOIN Comments c on c.Username = u.Username JOIN Bathrooms b ON c.BathroomID = b.BathroomID JOIN Ratings r ON r.Username = u.Username WHERE b.BuildingName = '$input->building' AND b.FloorNumber = '$x' GROUP BY u.Username";
-		$query = "SELECT u.Username, c.Comment, c.DateMade, r.Rating, b.BathroomID FROM Users u JOIN Comments c ON c.Username = u.Username JOIN Bathrooms b ON c.BathroomID = b.BathroomID JOIN Ratings r ON r.BathroomID = b.BathroomID WHERE b.BuildingName = '$input->building' AND b.FloorNumber = '$x'  GROUP BY b.BathroomID Order By DateMade";
+		// $query = "SELECT u.Username, c.Comment, c.DateMade, r.Rating, b.BathroomID FROM Users u JOIN Comments c ON c.Username = u.Username JOIN Bathrooms b ON c.BathroomID = b.BathroomID JOIN Ratings r ON r.BathroomID = b.BathroomID WHERE b.BuildingName = '$input->building' AND b.FloorNumber = '$x'  GROUP BY b.BathroomID Order By DateMade";
+
+		$query = "SELECT c.Username, c.BathroomID, c.Comment, c.DateMade, r.Rating FROM Comments c JOIN Ratings r ON c.Username = r.Username JOIN Bathrooms b ON b.BathroomID = c.BathroomID WHERE b.BuildingName = '$input->building' AND b.FloorNumber = '$x' GROUP By c.Username";
+		
 		$result = mysqli_query($db_connection, $query);
 
 		$temp = array();
