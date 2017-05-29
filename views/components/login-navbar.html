@@ -11,10 +11,10 @@
 		    	<h2 class="text-center"><i class="fa fa-sign-in" aria-hidden="true" style="margin-top:2%;"></i> Sign In</h2>
 				<form class="navbar-form navbar-right" role="signin" style="margin:10px 80px 80px 80px;">
 					<div class="form-group" style="margin-bottom:2%;">
-						<span><h4>Username:</h4></span><input type="text" class="form-control col-sm-3" name="username" placeholder="enter your username" required ng-model="input.username">	
+						<span><h4>Username:</h4></span><input type="text" class="form-control col-sm-3" id="signinusername" name="username" placeholder="enter your username" required ng-model="input.username">	
 					</div>
 					<div class="form-group">
-						<h4>Password:</h4><input type="text" class="form-control col-sm-3" name="password" placeholder="enter your password" required ng-model="input.password">
+						<h4>Password:</h4><input type="text" class="form-control col-sm-3" id="signinpassword" name="password" placeholder="enter your password" required ng-model="input.password">
 					</div>
 					<button type="submit" class="btn btn-primary" ng-click="loginUser(input)" style="width:100%;margin-top:5%;">Sign In</button>
 				</form>
@@ -33,19 +33,19 @@
 		       <h2 class="text-center"><i class="fa fa-user-plus" aria-hidden="true" style="margin-top:2%;"></i> Register</h2>
 				<form class="navbar-form navbar-right" role="register" style="margin:10px 80px 80px 80px;">
 					<div class="form-group" style="margin-bottom:2%;">
-						<h4>Username:</h4><input type="text" class="form-control col-sm-3" name="username" placeholder="choose a username" ng-model="data.username">	
+						<h4>Username:</h4><input type="text" class="form-control col-sm-3" id="regusername" name="username" placeholder="choose a username" ng-model="data.username">	
 					</div>
 					<div class="form-group">
-						<h4>Password:</h4><input type="text" class="form-control col-sm-3" name="password" placeholder="enter a password" ng-model="data.password">
+						<h4>Password:</h4><input type="text" class="form-control col-sm-3" id="regpassword" name="password" placeholder="enter a password" ng-model="data.password">
 					</div>
 					<div class="form-group" style="margin-bottom:2%;">
-						<h4>Email Address:</h4><input type="text" class="form-control col-sm-3" name="email" placeholder="enter your email" ng-model="data.email">	
+						<h4>Email Address:</h4><input type="text" class="form-control col-sm-3" id="regemail" name="email" placeholder="enter your email" ng-model="data.email">	
 					</div>
 					<div class="form-group">
-						<h4>First Name:</h4><input type="text" class="form-control col-sm-3" name="firstname" placeholder="enter your first name" ng-model="data.firstname">
+						<h4>First Name:</h4><input type="text" class="form-control col-sm-3" id="regfirstname" name="firstname" placeholder="enter your first name" ng-model="data.firstname">
 					</div>
 					<div class="form-group">
-						<h4>Last Name:</h4><input type="text" class="form-control col-sm-3" name="lastname" placeholder="enter your last name" ng-model="data.lastname">
+						<h4>Last Name:</h4><input type="text" class="form-control col-sm-3" id="reglastname" name="lastname" placeholder="enter your last name" ng-model="data.lastname">
 					</div>
 					<button type="submit" class="btn btn-primary" ng-click="registerUser(data)" style="width:100%;margin-top:5%;">Register</button>
 				</form>

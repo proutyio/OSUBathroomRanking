@@ -24,11 +24,10 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 					var user = {'username': json.data.Username};
 					$scope.loadProfileData(user);
 					$scope.currentuser = json.data.Username;
-
 					if($location.url() == '/') {
 						$location.path('/profile');
 					}
-					
+					$scope.clearForms();
 					$scope.loginVisible = false;
 					$scope.isLoggedIn = true;
 					$scope.profileVisible = true;
@@ -60,6 +59,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 						$scope.loginVisible = false;
 						$scope.isLoggedIn = true;
 						$scope.profileVisible = true;
+						$scope.clearForms();
 						$location.path('/profile');
 					}
 				});
@@ -145,6 +145,17 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		        break;
         }
        	return buildingname;
+	}
+
+
+	$scope.clearForms = function() {
+		$('#signinusername').val('');
+		$('#signinpassword').val('');
+		$('#regusername').val('');
+		$('#regpassword').val('');
+		$('#regemail').val('');
+		$('#regfirstname').val('');
+		$('#reglastname').val('');
 	}
 
 
