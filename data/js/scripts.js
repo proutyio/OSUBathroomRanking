@@ -16,7 +16,6 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	
 	$scope.loginUser = function(input) {
 		$scope.errormessage="";
-		
 		var $promise = $http.post('data//php//login_data.php', input);
 		$promise.then(function(json) {
 			if(typeof input === "undefined") { $scope.errormessage = "Error: Missing fields required"; }
@@ -24,7 +23,6 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 				if(json.data.Username === input.username && json.data.Password === input.password) {
 					var user = {'username': json.data.Username};
 					$scope.loadProfileData(user);
-
 					$scope.currentuser = json.data.Username;
 					$location.path('/profile');
 					$scope.loginVisible = false;
@@ -39,7 +37,6 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 
 	$scope.registerUser = function(input) {
 		$scope.errormessage="";
-		console.log(input);
 		if(typeof input === "undefined") { $scope.errormessage ="Error: Missing fields required"; }
 		else {
 			if( (input['username']===""||input['password']===""||input['email']===""||input['firstname']===""||input['lastname']==="") ||
@@ -49,7 +46,6 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 			}
 			else {
 				$promise = $http.post('data//php//register_data.php', input).then(function(json) {
-					console.log(json);
 					if(json.data == "Not successful") {
 						$scope.errormessage = "Error: Query Failed - Username might already exist";
 					}
@@ -61,13 +57,11 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 						$scope.isLoggedIn = true;
 						$scope.profileVisible = true;
 						$location.path('/profile');
-						
 					}
 				});
 			}
 		}
 	}
-
 
 
 	$scope.logoutUser = function() { 
@@ -80,26 +74,30 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	}
 
 
-
 	$scope.submitComment = function(building, floors, comment) {
-		// console.log($scope.currentuser);
-		// console.log($scope.bathroomID);
-		// console.log(comment);
-		// console.log($scope.starrating);
 		var input = {'username':$scope.currentuser,'bathroomid':$scope.bathroomID,'comment':comment,'rating':$scope.starrating};
-		
 		$http.post('data//php//submit_data.php',input).then(function(json) {});
 		$scope.loadBathroomData(building,floors); 
 	}
 
 
-
 	$scope.loadProfileData = function(user) {
-		 $http.post('data//php//profile_data.php',user).then(function(json) { 
-		 	$scope.profiledata = json.data;
+		$http.post('data//php//userdetails_data.php',user).then(function(json) { 
+		 	$scope.userdetailsdata = json.data;
+		 });
+
+		 $http.post('data//php//usercomment_data.php',user).then(function(json) { 
+		 	console.log(json.data.length);
+		 	if(json.data.length != 0) {
+		 		$scope.usercommentdata = json.data;
+		 		$scope.hasComments = true;
+			}
+			else {
+				$scope.hasComments = false;
+			}
+		 		
 		 });
 	}
-
 
 
 	$scope.loadBathroomData = function(building, floors) {
@@ -115,22 +113,18 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	}
 
 
-
 	$scope.loadDropdownData = function(building) {
 		var buildingname = $scope.switchBuildingName(building);
 		var input = {'building': buildingname};
 		 $http.post('data//php//dropdown_data.php',input).then(function(json) { 
 		 	$scope.dropdowndata = json.data;
-		 	//console.log(json);
 		 });
 	}
-
 
 
 	$scope.getID = function(id) {
 		$scope.bathroomID = id;
 	}
-
 
 
 	$scope.switchBuildingName = function(building) {

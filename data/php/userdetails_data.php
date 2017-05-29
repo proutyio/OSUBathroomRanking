@@ -9,16 +9,19 @@
 	$input = json_decode(file_get_contents('php://input'));
 
 	
-	$query = "SELECT BathroomID FROM Bathrooms WHERE BuildingName = '$input->building'";
+	$query = "SELECT Username, EmailAddress, FirstName, LastName, LastName, SignUpDate FROM Users WHERE Username = '$input->username'";
+
 	
 	$result = mysqli_query($db_connection, $query);
 
-	$data = array();
-	while ($row = mysqli_fetch_array($result)) {
-	  $data[] = $row;
+	
+	if($result) { 
+		$data = array();
+		while ($row = mysqli_fetch_array($result)) {
+		  $data[] = $row;
+		}
+	    print json_encode($data);
 	}
-    print json_encode($data);
-
+	
 	mysqli_close($db_connection);
 ?>
-
