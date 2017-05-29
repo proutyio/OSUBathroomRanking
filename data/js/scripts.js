@@ -24,7 +24,11 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 					var user = {'username': json.data.Username};
 					$scope.loadProfileData(user);
 					$scope.currentuser = json.data.Username;
-					$location.path('/profile');
+
+					if($location.url() == '/') {
+						$location.path('/profile');
+					}
+					
 					$scope.loginVisible = false;
 					$scope.isLoggedIn = true;
 					$scope.profileVisible = true;
