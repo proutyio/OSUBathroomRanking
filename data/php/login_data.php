@@ -21,6 +21,8 @@
 	echo json_encode(mysqli_fetch_assoc($result));
 
 
+
+	mysql_free_result($result);
 	mysqli_close($db_connection);
 
 ?>

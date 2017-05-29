@@ -9,7 +9,11 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.buildingtext = "";
 	$scope.loginVisible = true;
 	$scope.profileVisible = false;
-	$scope.bathroomsVisible = false;
+	$scope.linqVisible = false;
+	$scope.libraryVisible = false;
+	$scope.austinVisible = false;
+	$scope.muVisible = false;
+	$scope.kelleyVisible = false;
 	$scope.selectedDropdown = "";
 	$scope.bathroomID = "";
 
@@ -78,8 +82,8 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	}
 
 
-	$scope.submitComment = function(building, floors, comment) {
-		var input = {'username':$scope.currentuser,'bathroomid':$scope.bathroomID,'comment':comment,'rating':$scope.starrating};
+	$scope.submitComment = function(building, floors, comment, rating) {
+		var input = {'username':$scope.currentuser,'bathroomid':$scope.bathroomID,'comment':comment,'rating':rating};
 		$http.post('data//php//submit_data.php',input).then(function(json) {});
 		$scope.loadBathroomData(building,floors); 
 	}
@@ -89,17 +93,13 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		$http.post('data//php//userdetails_data.php',user).then(function(json) { 
 		 	$scope.userdetailsdata = json.data;
 		 });
-
 		 $http.post('data//php//usercomment_data.php',user).then(function(json) { 
 		 	console.log(json.data.length);
 		 	if(json.data.length != 0) {
 		 		$scope.usercommentdata = json.data;
 		 		$scope.hasComments = true;
 			}
-			else {
-				$scope.hasComments = false;
-			}
-		 		
+			else { $scope.hasComments = false; }
 		 });
 	}
 
@@ -132,19 +132,40 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 
 
 	$scope.switchBuildingName = function(building) {
+		$scope.clearBuilding();
 		var buildingname = "";
 		switch(building) {
             case "kelley":
 		        buildingname = "Kelley Engineering Center";
+		        $scope.kelleyVisible = true;
 		        break;
 		    case "linq":
 		        buildingname = "Learning Innovation Center";
+		        $scope.linqVisible = true;
 		        break;
 		    case "library":
 		        buildingname = "Valley Library";
+		        $scope.libraryVisible = true;
+		        break;
+		    case "austin":
+		        buildingname = "Austin Hall";
+		        $scope.austinVisible = true;
+		        break;
+		    case "mu":
+		        buildingname = "Memorial Union";
+		        $scope.muVisible = true;
 		        break;
         }
        	return buildingname;
+	}
+
+
+	$scope.clearBuilding = function() {
+		$scope.linqVisible = false;
+		$scope.libraryVisible = false;
+		$scope.austinVisible = false;
+		$scope.muVisible = false;
+		$scope.kelleyVisible = false;
 	}
 
 
@@ -156,6 +177,12 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		$('#regemail').val('');
 		$('#regfirstname').val('');
 		$('#reglastname').val('');
+	}
+
+
+	$scope.click_profile = function() {
+		var user = {'username': $scope.currentuser};
+		$scope.loadProfileData(user);
 	}
 
 

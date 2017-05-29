@@ -9,11 +9,11 @@
 	$input = json_decode(file_get_contents('php://input'));
 
 	
-	$query = "INSERT INTO Comments (Username, BathroomID, Comment, DateMade) VALUES ('$input->username', '$input->bathroomid', '$input->comment', CURRENT_TIMESTAMP)";
-	mysqli_query($db_connection, $query);
+	$queryA = "INSERT INTO Comments (Username, BathroomID, Comment, DateMade) VALUES ('$input->username', '$input->bathroomid', '$input->comment', CURRENT_TIMESTAMP)";
+	mysqli_query($db_connection, $queryA);
 
-	$query = "INSERT INTO Ratings (Username, BathroomID, Rating, DateMade) VALUES ('$input->username', '$input->bathroomid', '$input->rating', CURRENT_TIMESTAMP)";
-	mysqli_query($db_connection, $query);
+	$queryB = "INSERT INTO Ratings (Username, BathroomID, Rating, DateMade) VALUES ('$input->username', '$input->bathroomid', '$input->rating', CURRENT_TIMESTAMP)";
+	mysqli_query($db_connection, $queryB);
 
 	
 	// $data = array();
@@ -21,6 +21,6 @@
 	//   $data[] = $row;
 	// }
  //    print json_encode($data);
-
+	mysql_free_result($result);
 	mysqli_close($db_connection);
 ?>

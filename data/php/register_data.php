@@ -21,6 +21,8 @@
 		die('Not successful');
 	
 
+
+	mysql_free_result($result);
 	mysqli_close($db_connection);
 
 ?>
