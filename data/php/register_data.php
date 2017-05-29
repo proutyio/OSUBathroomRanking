@@ -16,9 +16,10 @@
 	$query = "INSERT INTO Users (Username, Password, EmailAddress, FirstName, LastName, SignUpDate) VALUES ('$input->username', '$input->password', '$input->email', '$input->firstname', '$input->lastname', CURRENT_TIMESTAMP)";
 
 	$result = mysqli_query($db_connection, $query);
-	
-	echo $result;
 
+	if(!$result)
+		die('Not successful');
+	
 
 	mysqli_close($db_connection);
 

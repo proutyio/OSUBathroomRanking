@@ -49,7 +49,11 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 			}
 			else {
 				$promise = $http.post('data//php//register_data.php', input).then(function(json) {
-					if(json) {
+					console.log(json);
+					if(json.data == "Not successful") {
+						$scope.errormessage = "Error: Query Failed - Username might already exist";
+					}
+					else {
 						$scope.currentuser = input['username'];
 						var user = {'username': input['username']};
 						$scope.loadProfileData(user);
@@ -57,9 +61,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 						$scope.isLoggedIn = true;
 						$scope.profileVisible = true;
 						$location.path('/profile');
-					}
-					else {
-						$scope.errormessage = "Error: Query Failed - Username might already exist";
+						
 					}
 				});
 			}
