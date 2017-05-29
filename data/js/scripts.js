@@ -83,9 +83,15 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 
 	$scope.submitComment = function(building, floors, comment, rating) {
 		console.log(rating);
+		console.log(comment);
 		var input = {'username':$scope.currentuser,'bathroomid':$scope.bathroomID,'comment':comment,'rating':rating};
-		$http.post('data//php//submit_data.php',input).then(function(json) {});
-		$scope.loadBathroomData(building,floors); 
+		$http.post('data//php//insert_comment.php',input).then(function(json) {
+			$http.post('data//php//insert_rating.php',input).then(function(json) {
+				$scope.loadBathroomData(building,floors); 
+			});
+		});
+		
+		
 	}
 
 
