@@ -1,15 +1,37 @@
-<jk-rating-stars rating="starrating" ></jk-rating-stars>
-<div>{{starrating}} Stars</div>
+<div class="col-sm-12" style="margin-top:6%;" ng-show="!isLoggedIn">
+	<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.2);border-color:#DC4405;margin-bottom:0%;"></div>
+	<h3 class=""><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Comment / Rating </h3>
+	<div class="col-sm-12">
+		<h4>Please Login or Register to add comments and ratings</h4>
+	</div>
+</div>
 
-&nbsp;
 
 
-<div class="well" style="width:60%;background-color:#FFF;margin-left:20%;padding:30px;">
-	<form action="" method="" id="commentform">
-		<div class="form-group">
-			<label for="comment">Comment:</label>
-			<textarea class="form-control" rows="10" id="comment"></textarea>
+<div class="col-sm-12" style="margin-top:6%;" ng-show="isLoggedIn">
+	<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.2);border-color:#DC4405;margin-bottom:0%;"></div>
+	<h3 class=""><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Comment / Rating </h3>
+	<!-- <div class="col-sm-12" style="border:1px solid rgba(0,0,0,.2);border-color:#DC4405;margin-bottom:1%;"></div> -->
+	<div class="col-sm-12">
+		<div class="col-sm-3" style="margin-top:2%;">
+			<div class="list-group">
+			  <a href="" class="list-group-item" ng-repeat="x in dropdowndata" id="{{x[0]+'ID'}}" ng-click="getID(x[0])">{{x[0]}}</a>
+			</div>
 		</div>
-		<button type="submit" class="btn btn-default">Submit Comment</button>
-	</form>
-</div
+		<div class="col-sm-1"></div>
+		<div class="col-sm-6" style="margin-top:1%;">
+			<div class="text-center">
+				<jk-rating-stars rating="starrating" read-only="readOnly"></jk-rating-stars>
+				<div>{{starrating}} Stars</div>
+			</div>
+			<span><form id="commentform">
+				<div class="form-group">
+					<label for="comment"><h3><i class="fa fa-comments-o" aria-hidden="true"></i>  Comment:</h3></label>
+					<textarea class="form-control" rows="5" id="comment" placeholder="write your comment" required ng-model='comment'></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary text-center" style="width:100%;" ng-click="submitComment('linq','4',comment,starrating)">Submit Comment</button>
+			</form></span>
+		</div>
+		<div class="col-sm-2">{{errormessage}}</div>
+	</div>
+</div>
