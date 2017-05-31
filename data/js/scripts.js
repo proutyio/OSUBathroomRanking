@@ -4,8 +4,10 @@
 app.controller('controller',['$scope','$location','$http',function($scope,$location,$http) {
 
 	$scope.currentuser ="Welcome, Guest!";
-	$scope.errormessage ="";
 	$scope.buildingtext = "";
+	$scope.selectedDropdown = "";
+	$scope.bathroomID = "";
+	
 	$scope.loginVisible = true;
 	$scope.profileVisible = false;
 	$scope.linqVisible = false;
@@ -13,49 +15,43 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.austinVisible = false;
 	$scope.muVisible = false;
 	$scope.kelleyVisible = false;
-	$scope.selectedDropdown = "";
-	$scope.bathroomID = "";
-	$scope.idSelected = null;
+	
 
 	
 	$scope.loginUser = function(input) {
-		$scope.errormessage="";
+		$scope.loginmessage="";
 		var $promise = $http.post('data//php//login_data.php', input);
 		$promise.then(function(json) {
-			if(typeof input === "undefined") { $scope.errormessage = "Error: Missing fields required"; }
+			if(typeof input === "undefined") { $scope.loginmessage = "Error: Missing fields required"; }
 			else {
 				if(json.data.Username === input.username && json.data.Password === input.password) {
 					var user = {'username': json.data.Username};
 					$scope.loadProfileData(user);
 					$scope.currentuser = json.data.Username;
-					if($location.url() == '/') {
-						$location.path('/profile');
-					}
+					if($location.url() == '/') { $location.path('/profile'); }
 					$scope.clearForms();
 					$scope.loginVisible = false;
 					$scope.isLoggedIn = true;
 					$scope.profileVisible = true;
 				}
-				else { $scope.errormessage = "Error: Invalid Username or Password"; }
+				else { $scope.loginmessage = "Error: Invalid Username or Password"; }
 			}
 		});
 	}
 
 
 	$scope.registerUser = function(input) {
-		$scope.errormessage="";
-		if(typeof input === "undefined") { $scope.errormessage ="Error: Missing fields required"; }
+		$scope.registermessage="";
+		if(typeof input === "undefined") { $scope.registermessage ="Error: Missing fields required"; }
 		else {
 			if( (input['username']===""||input['password']===""||input['email']===""||input['firstname']===""||input['lastname']==="") ||
 			  (typeof input['username']==="undefined"||typeof input['password']==="undefined"||typeof input['email']==="undefined"||
 			  	typeof input['firstname']==="undefined"||typeof input['lastname']==="undefined") ) {
-				$scope.errormessage ="Error: Missing fields required";
+				$scope.registermessage ="Error: Missing fields required";
 			}
 			else {
 				var $promise = $http.post('data//php//register_data.php', input).then(function(json) {
-					if(json.data == "Not successful") {
-						$scope.errormessage = "Error: Query Failed - Username might already exist";
-					}
+					if(json.data == "Not successful") { $scope.registermessage = "Error: Query Failed - Username might already exist"; }
 					else {
 						$scope.currentuser = input['username'];
 						var user = {'username': input['username']};
@@ -83,29 +79,24 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 
 
 	$scope.submitComment = function(comment, rating) {
-		console.log(rating);
-		console.log(comment);
 		$scope.errormessage = "";
-
-		if(typeof rating === "undefined" || rating === "" || rating === 0) { $scope.errormessage = "Error: must select a rating"; }
-		else if(typeof $scope.bathroomID === "undefined" || $scope.bathroomID === ""){ $scope.errormessage = "Error: must select a bathroom id"; } 
+		if(typeof comment === "undefined" || comment === "") { $scope.errormessage = "please enter your comment"; } 
+		else if(typeof rating === "undefined" || rating === "" || rating === 0) { $scope.errormessage = "please select a rating"; }
+		else if(typeof $scope.bathroomID === "undefined" || $scope.bathroomID === ""){ $scope.errormessage = "please select a bathroom id"; } 
 		else {
 			var input = {'username':$scope.currentuser,'bathroomid':$scope.bathroomID,'comment':comment,'rating':rating};
 			var $promise = $http.post('data//php//check_bathroomid.php', input).then(function(json) {
-				if(json.data == "Not successful") { $scope.errormessage = "Error: Query failed"; }
+				if(json.data == "Not successful") { $scope.errormessage = "error: query failed"; }
 				else {
-					//console.log(json.data);
 					var check = 0;
 					for(var x=0; x<json.data.length; x++) {
-						//console.log(json.data[x][0]);
 						if(json.data[x][0] === $scope.bathroomID) {
 							check = 1;
 							break;
 						}
 					}
-					if(check == 1){ $scope.errormessage = "Error: You can only comment once on a bathroom"; }
+					if(check == 1){ $scope.errormessage = "sorry, you can only comment once on a bathroom"; }
 					else {
-						//console.log("add comment");
 						$http.post('data//php//insert_comment.php',input).then(function(json) {
 							$http.post('data//php//insert_rating.php',input).then(function(json) {
 								$scope.loadBathroomData($scope.currentbuilding,$scope.currentbuildingfloors); 
@@ -126,8 +117,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		 	if(json.data.length != 0) {
 		 		$scope.usercommentdata = json.data;
 		 		$scope.hasComments = true;
-			}
-			else { $scope.hasComments = false; }
+			}else { $scope.hasComments = false; }
 		 });
 	}
 
@@ -156,11 +146,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	}
 
 
-	$scope.getID = function(id) {
-		$scope.bathroomID = id;
-		console.log(id);
-		//$scope.idSelected = idSelected;
-	}
+	$scope.getID = function(id) { $scope.bathroomID = id; }
 
 
 	$scope.switchBuildingName = function(building) {
@@ -216,7 +202,6 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		var user = {'username': $scope.currentuser};
 		$scope.loadProfileData(user);
 	}
-
 
 
 	/* *** SIDE NAV HIGHLIGHTING *** */
@@ -303,12 +288,3 @@ app.factory('serviceSession', ['$http', function($http){
 		}
 	};
 }]);
-
-
-
-
-
-
-
-
-

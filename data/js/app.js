@@ -16,8 +16,8 @@ app.directive('sideNavbar', function() { return { templateUrl:'views/components/
 app.directive('loginNavbar', function() { return { templateUrl:'views/components/login-navbar.html' }});
 app.directive('logoutNavbar', function() { return { templateUrl:'views/components/logout-navbar.html' }});
 app.directive('myFooter', function() { return { templateUrl:'views/components/footer.html' }});
-app.directive('linqBathroom', function() { return { templateUrl:'views/components/bathrooms/linq-bathroom.html' }});
-app.directive('libraryBathroom', function() { return { templateUrl:'views/components/bathrooms/library-bathroom.html' }});
-app.directive('austinBathroom', function() { return { templateUrl:'views/components/bathrooms/austin-bathroom.html' }});
-app.directive('kelleyBathroom', function() { return { templateUrl:'views/components/bathrooms/kelley-bathroom.html' }});
-app.directive('muBathroom', function() { return { templateUrl:'views/components/bathrooms/mu-bathroom.html' }});
+app.directive('linqBathroom', function() { return { templateUrl:'views/bathrooms/linq-bathroom.html' }});
+app.directive('libraryBathroom', function() { return { templateUrl:'views/bathrooms/library-bathroom.html' }});
+app.directive('austinBathroom', function() { return { templateUrl:'views/bathrooms/austin-bathroom.html' }});
+app.directive('kelleyBathroom', function() { return { templateUrl:'views/bathrooms/kelley-bathroom.html' }});
+app.directive('muBathroom', function() { return { templateUrl:'views/bathrooms/mu-bathroom.html' }});
