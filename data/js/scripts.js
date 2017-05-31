@@ -269,6 +269,10 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.muExit = function(){ $("#mutext").css({"font-size":"34px","font-style":"","color":"#373737"});}
 	$scope.intoEnter = function(){ $("#intotext").css({"font-size":"42px","font-style":"bold","color":"#DC4405"});}
 	$scope.intoExit = function(){ $("#intotext").css({"font-size":"34px","font-style":"","color":"#373737"});}
+	$scope.kelleyEnter = function(){ $("#kelleytext").css({"font-size":"42px","font-style":"bold","color":"#DC4405"});}
+	$scope.kelleyExit = function(){ $("#kelleytext").css({"font-size":"34px","font-style":"","color":"#373737"});}
+	$scope.johnsonEnter = function(){ $("#johnsontext").css({"font-size":"42px","font-style":"bold","color":"#DC4405"});}
+	$scope.johnsonExit = function(){ $("#johnsontext").css({"font-size":"34px","font-style":"","color":"#373737"});}
 	/* ********************************** */
 }]);
 
