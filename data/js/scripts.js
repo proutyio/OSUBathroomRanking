@@ -82,39 +82,38 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	}
 
 
-	$scope.submitComment = function(building, floors, comment, rating) {
+	$scope.submitComment = function(comment, rating) {
 		console.log(rating);
 		console.log(comment);
 		$scope.errormessage = "";
 
-		if(typeof rating === "undefined" || rating === "" || rating === 0) {
-			$scope.errormessage = "Error: must select a rating";
-		} else {
+		if(typeof rating === "undefined" || rating === "" || rating === 0) { $scope.errormessage = "Error: must select a rating"; }
+		else if(typeof $scope.bathroomID === "undefined" || $scope.bathroomID === ""){ $scope.errormessage = "Error: must select a bathroom id"; } 
+		else {
 			var input = {'username':$scope.currentuser,'bathroomid':$scope.bathroomID,'comment':comment,'rating':rating};
-
 			var $promise = $http.post('data//php//check_bathroomid.php', input).then(function(json) {
-					if(json.data == "Not successful") { $scope.errormessage = "Error: Query failed"; }
-					else {
-						//console.log(json.data);
-						var check = 0;
-						for(var x=0; x<json.data.length; x++) {
-							//console.log(json.data[x][0]);
-							if(json.data[x][0] === $scope.bathroomID) {
-								check = 1;
-								break;
-							}
-						}
-						if(check == 1){ $scope.errormessage = "Error: You can only comment once on a bathroom"; }
-						else {
-							//console.log("add comment");
-							$http.post('data//php//insert_comment.php',input).then(function(json) {
-								$http.post('data//php//insert_rating.php',input).then(function(json) {
-									$scope.loadBathroomData(building,floors); 
-								});
-							});
+				if(json.data == "Not successful") { $scope.errormessage = "Error: Query failed"; }
+				else {
+					//console.log(json.data);
+					var check = 0;
+					for(var x=0; x<json.data.length; x++) {
+						//console.log(json.data[x][0]);
+						if(json.data[x][0] === $scope.bathroomID) {
+							check = 1;
+							break;
 						}
 					}
-				});
+					if(check == 1){ $scope.errormessage = "Error: You can only comment once on a bathroom"; }
+					else {
+						//console.log("add comment");
+						$http.post('data//php//insert_comment.php',input).then(function(json) {
+							$http.post('data//php//insert_rating.php',input).then(function(json) {
+								$scope.loadBathroomData($scope.currentbuilding,$scope.currentbuildingfloors); 
+							});
+						});
+					}
+				}
+			});
 		}
 	}
 
@@ -134,6 +133,8 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 
 
 	$scope.loadBathroomData = function(building, floors) {
+		$scope.currentbuilding = building;
+		$scope.currentbuildingfloors = floors;
 		var buildingname = $scope.switchBuildingName(building);
 		var input = {'building': buildingname,'floors': floors};
 		$http.post('data//php//bathroom_data.php',input).then(function(json) {
@@ -163,7 +164,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 
 
 	$scope.switchBuildingName = function(building) {
-		$scope.clearBuilding();
+		$scope.clearBathrooms();
 		var buildingname = "";
 		switch(building) {
             case "kelley":
@@ -191,7 +192,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	}
 
 
-	$scope.clearBuilding = function() {
+	$scope.clearBathrooms = function() {
 		$scope.linqVisible = false;
 		$scope.libraryVisible = false;
 		$scope.austinVisible = false;
@@ -211,10 +212,11 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	}
 
 
-	$scope.click_profile = function() {
+	$scope.clickProfile = function() {
 		var user = {'username': $scope.currentuser};
 		$scope.loadProfileData(user);
 	}
+
 
 
 	/* *** SIDE NAV HIGHLIGHTING *** */
