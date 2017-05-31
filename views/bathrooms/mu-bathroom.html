@@ -8,7 +8,7 @@
 			<div class="col-sm-12" style="margin-top:2%;">
 				<h3 class="">Main Floor:</h3>
 				<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
-				<div ng-repeat="x in bathroomdata[0]"> 
+				<div ng-repeat="x in bathroomdata[1]"> 
 					<table class="table table-responsive table-hover">
 					    <thead>
 							<tr>
@@ -25,7 +25,7 @@
 								<td class="col-md-2">{{x.DateMade}}</td>
 								<td class="col-md-2">{{x.BathroomID}}</td>
 								<td class="col-md-1">{{x.Rating}}</td>
-								<td class="col-md-5">{{x.Comment}}</td>
+								<td class="col-md-5"><h4>{{x.Comment}}</h4></td>
 							</tr>
 					    </tbody>
 					</table>
@@ -34,33 +34,6 @@
 			
 			<div class="col-sm-12" style="margin-top:4%;">
 				<h3 class="">Upper Floor:</h3>
-				<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
-				<div ng-repeat="x in bathroomdata[1]">
-					<table class="table table-responsive table-hover">
-					    <thead>
-							<tr>
-								<th>User</th>
-								<th>Date Made</th>
-								<th>Bathroom ID</th>
-								<th>Rating</th>
-								<th>Comment</th>
-							</tr>
-					    </thead>
-					    <tbody>
-							<tr>
-								<td class="col-md-2">{{x.Username}}</td>
-								<td class="col-md-2">{{x.DateMade}}</td>
-								<td class="col-md-2">{{x.BathroomID}}</td>
-								<td class="col-md-1">{{x.Rating}}</td>
-								<td class="col-md-5">{{x.Comment}}</td>
-							</tr>
-					    </tbody>
-					</table>
-				</div>
-			</div>
-
-			<div class="col-sm-12" style="margin-top:4%;">
-				<h3 class="">Basement Floor:</h3>
 				<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
 				<div ng-repeat="x in bathroomdata[2]">
 					<table class="table table-responsive table-hover">
@@ -79,7 +52,34 @@
 								<td class="col-md-2">{{x.DateMade}}</td>
 								<td class="col-md-2">{{x.BathroomID}}</td>
 								<td class="col-md-1">{{x.Rating}}</td>
-								<td class="col-md-5">{{x.Comment}}</td>
+								<td class="col-md-5"><h4>{{x.Comment}}</h4></td>
+							</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="col-sm-12" style="margin-top:4%;">
+				<h3 class="">Basement Floor:</h3>
+				<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
+				<div ng-repeat="x in bathroomdata[0]">
+					<table class="table table-responsive table-hover">
+					    <thead>
+							<tr>
+								<th>User</th>
+								<th>Date Made</th>
+								<th>Bathroom ID</th>
+								<th>Rating</th>
+								<th>Comment</th>
+							</tr>
+					    </thead>
+					    <tbody>
+							<tr>
+								<td class="col-md-2">{{x.Username}}</td>
+								<td class="col-md-2">{{x.DateMade}}</td>
+								<td class="col-md-2">{{x.BathroomID}}</td>
+								<td class="col-md-1">{{x.Rating}}</td>
+								<td class="col-md-5"><h4>{{x.Comment}}</h4></td>
 							</tr>
 					    </tbody>
 					</table>

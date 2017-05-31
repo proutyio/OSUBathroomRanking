@@ -7,6 +7,9 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.buildingtext = "";
 	$scope.selectedDropdown = "";
 	$scope.bathroomID = "";
+	$scope.loginmessage = "";
+	$scope.registermessage = "";
+	$scope.errormessage = "";
 	
 	$scope.loginVisible = true;
 	$scope.profileVisible = false;
@@ -137,6 +140,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		$scope.buildingtext = buildingname;
 		$scope.bathroomsVisible = true;
 		$location.path('/bathrooms');
+		$scope.clearComment();
 	}
 
 
@@ -202,6 +206,9 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		$scope.johnsonVisible = false;
 		$scope.linusVisible = false;
 		$scope.intoVisible = false;
+		$scope.errormessage = "";
+		$scope.registermessage = "";
+		$scope.loginmessage = "";
 	}
 
 
@@ -219,6 +226,10 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.clickProfile = function() {
 		var user = {'username': $scope.currentuser};
 		$scope.loadProfileData(user);
+	}
+
+	$scope.clearComment = function() {
+		$("#commentform").css({"text":""});
 	}
 
 
