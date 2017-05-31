@@ -21,3 +21,6 @@ app.directive('libraryBathroom', function() { return { templateUrl:'views/bathro
 app.directive('austinBathroom', function() { return { templateUrl:'views/bathrooms/austin-bathroom.html' }});
 app.directive('kelleyBathroom', function() { return { templateUrl:'views/bathrooms/kelley-bathroom.html' }});
 app.directive('muBathroom', function() { return { templateUrl:'views/bathrooms/mu-bathroom.html' }});
+app.directive('johnsonBathroom', function() { return { templateUrl:'views/bathrooms/johnson-bathroom.html' }});
+app.directive('linusBathroom', function() { return { templateUrl:'views/bathrooms/linus-bathroom.html' }});
+app.directive('intoBathroom', function() { return { templateUrl:'views/bathrooms/into-bathroom.html' }});

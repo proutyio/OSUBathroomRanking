@@ -15,6 +15,9 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.austinVisible = false;
 	$scope.muVisible = false;
 	$scope.kelleyVisible = false;
+	$scope.johnsonVisible = false;
+	$scope.intoVisible = false;
+	$scope.linusVisible = false;
 	
 
 	
@@ -173,6 +176,18 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		        buildingname = "Memorial Union";
 		        $scope.muVisible = true;
 		        break;
+		    case "johnson":
+		        buildingname = "Johnson Hall";
+		        $scope.johnsonVisible = true;
+		        break;
+		    case "into":
+		        buildingname = "INTO";
+		        $scope.intoVisible = true;
+		        break;
+		    case "linus":
+		        buildingname = "Linus Pauling Science Center";
+		        $scope.linusVisible = true;
+		        break;
         }
        	return buildingname;
 	}
@@ -184,6 +199,9 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		$scope.austinVisible = false;
 		$scope.muVisible = false;
 		$scope.kelleyVisible = false;
+		$scope.johnsonVisible = false;
+		$scope.linusVisible = false;
+		$scope.intoVisible = false;
 	}
 
 
@@ -273,6 +291,8 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.kelleyExit = function(){ $("#kelleytext").css({"font-size":"34px","font-style":"","color":"#373737"});}
 	$scope.johnsonEnter = function(){ $("#johnsontext").css({"font-size":"42px","font-style":"bold","color":"#DC4405"});}
 	$scope.johnsonExit = function(){ $("#johnsontext").css({"font-size":"34px","font-style":"","color":"#373737"});}
+	$scope.linusEnter = function(){ $("#linustext").css({"font-size":"42px","font-style":"bold","color":"#DC4405"});}
+	$scope.linusExit = function(){ $("#linustext").css({"font-size":"34px","font-style":"","color":"#373737"});}
 	/* ********************************** */
 }]);
 
