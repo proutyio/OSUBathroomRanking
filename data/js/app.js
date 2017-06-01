@@ -7,6 +7,7 @@ app.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/profile', { templateUrl: 'views/profile.html'});
 	$routeProvider.when('/buildings', { templateUrl: 'views/buildings.html'});
 	$routeProvider.when('/bathrooms', { templateUrl: 'views/bathrooms.html'});
+	$routeProvider.when('/testpage', { templateUrl: 'views/testpage.html'});
 	$routeProvider.otherwise({redirectTo: '/'});
 }]);
 

@@ -11,8 +11,8 @@
 	$data = array();
 
 	for ($x = 1; $x <= $input->floors; $x++) {
-		// $query = "SELECT c.Username, c.BathroomID, c.Comment, c.DateMade, r.Rating FROM Comments c JOIN Ratings r ON c.Username = r.Username JOIN Bathrooms b ON b.BathroomID = c.BathroomID WHERE b.BuildingName = '$input->building' AND b.FloorNumber = '$x' GROUP By c.Username";
-		$query = "SELECT c.Username, c.BathroomID, c.Comment, c.DateMade, r.Rating FROM Comments c JOIN Bathrooms b ON c.BathroomID = b.BathroomID JOIN Ratings r ON c.Username = r.Username AND c.BathroomID = r.BathroomID WHERE b.BuildingName = '$input->building' AND b.FloorNumber = '$x' GROUP BY c.BathroomID";
+
+		$query = "SELECT c.Username, c.BathroomID, c.Comment, c.DateMade, r.Rating FROM Comments c JOIN Bathrooms b ON b.BathroomID = c.BathroomID JOIN Ratings r ON r.Username = c.Username AND c.BathroomID = r.BathroomID WHERE b.BuildingName = '$input->building' AND b.FloorNumber = '$x' AND b.Female = 1 ORDER BY c.DateMade";
 		
 		$result = mysqli_query($db_connection, $query);
 

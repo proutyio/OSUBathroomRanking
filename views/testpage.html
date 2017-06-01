@@ -1,0 +1,99 @@
+
+
+<div class="text-center" style="text-align:center;display:block;">
+	<img src="img/buildings/mu.jpg" class="img-responsive" style="text-align:center;display:block;margin:auto;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+</div>
+
+
+
+
+<div class="well" style="margin-top:2%;">
+	<div class="container">
+		
+
+		<h3 class="">Main Floor:</h3>
+		<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
+		<ol class="breadcrumb" style="margin-left:1%;">
+			<li><a href="" style="font-size:22px;">Male</a></li>
+			<li class="active" style="font-size:22px;">Foodcourt</li>
+			<li class="active" style="font-size:22px;">Bathroom</li>
+		</ol>
+
+		<div ng-repeat="x in bathroomdata[0]"> 
+
+			<!--  -->
+			<div class="col-sm-12">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-8">
+					<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;">
+						<div class="panel-body" style="font-size:16px;">
+							<div class="col-sm-12">
+								<div class="col-sm-2" style="padding:0px;"><h4 style="font-weight:bold;"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{x.Username}}</h4></div>
+								<div class="col-sm-2" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
+								<div class="col-sm-4"></div>
+								<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+							</div>
+							<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+			<!--  -->
+
+		</div>
+
+		<div style="margin-top:20%;">
+			<ol class="breadcrumb" style="margin-left:1%;">
+				<li><a href="" style="font-size:22px;">Male</a></li>
+				<li class="active" style="font-size:22px;">Foodcourt</li>
+				<li class="active" style="font-size:22px;">Bathroom</li>
+			</ol>
+		</div>
+
+
+		<div style="margin-top:20%;">
+			<ol class="breadcrumb" style="margin-left:1%;">
+				<li><a href="" style="font-size:22px;">Female</a></li>
+				<li class="active" style="font-size:22px;">Foodcourt</li>
+				<li class="active" style="font-size:22px;">Bathroom</li>
+			</ol>
+		</div>
+
+		<div style="margin-top:20%;">
+			<ol class="breadcrumb" style="margin-left:1%;">
+				<li><a href="" style="font-size:22px;">Female</a></li>
+				<li class="active" style="font-size:22px;">Hallway</li>
+				<li class="active" style="font-size:22px;">Bathroom</li>
+			</ol>
+		</div>
+
+
+		<div style="margin-top:20%;">
+			<ol class="breadcrumb" style="margin-left:1%;">
+				<li><a href="" style="font-size:22px;">Family</a></li>
+				<li class="active" style="font-size:22px;">Hallway</li>
+				<li class="active" style="font-size:22px;">Bathroom</li>
+			</ol>
+		</div>
+
+
+
+
+		
+
+
+		<h3 class="" style="margin-top:5%;">Floor 2:</h3>
+		<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
+		<ol class="breadcrumb">
+			  <!-- <li><a href="" style="font-size:24px;">Floor 1</a></li> -->
+			<li><a href="" style="font-size:18px;">Female</a></li>
+			<li class="active" style="font-size:18px;">Other</li>
+		</ol>
+
+
+
+
+
+	</div>
+</div>
