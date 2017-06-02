@@ -10,6 +10,9 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.loginmessage = "";
 	$scope.registermessage = "";
 	$scope.errormessage = "";
+	$scope.starrating = 0;
+	$scope.modalComment = "";
+	$scope.modalBathroomid = "";
 	
 	$scope.loginVisible = true;
 	$scope.profileVisible = false;
@@ -114,6 +117,18 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	}
 
 
+	$scope.deleteComment = function(bathroomid,username) {
+		var user = {'bathroomid': bathroomid,'username': username};
+		$http.post('data//php//delete_comment.php',user).then(function(json) { $scope.loadProfileData(user); });
+	}
+
+
+	$scope.updateComment = function(bathroomid,username,comment) {
+		var user = {'bathroomid':bathroomid,'username':$scope.currentuser,'comment':comment};
+		$http.post('data//php//update_comment.php',user).then(function(json) { $scope.loadProfileData(user); });
+	}
+
+
 	$scope.loadProfileData = function(user) {
 		$http.post('data//php//userdetails_data.php',user).then(function(json) { 
 		 	$scope.userdetailsdata = json.data;
@@ -124,6 +139,14 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		 		$scope.hasComments = true;
 			}else { $scope.hasComments = false; }
 		 });
+		 $scope.clearLoginForm();
+	}
+
+
+	$scope.loadProfile = function() {
+		$location.path('/profile');
+		var user = {'username': $scope.currentuser};
+		$scope.loadProfileData(user);
 	}
 
 
@@ -134,17 +157,14 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		var input = {'building': buildingname,'floors': floors};
 		
 		$http.post('data//php//male_data.php',input).then(function(json) {
-			console.log(json.data);
 		 	$scope.maledata = json.data;
 		});
 
 		$http.post('data//php//female_data.php',input).then(function(json) {
-			console.log(json.data);
 		 	$scope.femaledata = json.data;
 		});
 
 		$http.post('data//php//family_data.php',input).then(function(json) {
-			console.log(json.data);
 		 	$scope.familydata = json.data;
 		});
 		
@@ -152,7 +172,9 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		$scope.buildingtext = buildingname;
 		$scope.bathroomsVisible = true;
 		$location.path('/bathrooms');
-		$scope.clearComment();
+		$scope.bathroomID = "";
+		$scope.starrating = 0;
+		$scope.comment = "";
 	}
 
 
@@ -162,6 +184,13 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		 $http.post('data//php//dropdown_data.php',input).then(function(json) { 
 		 	$scope.dropdowndata = json.data;
 		 });
+	}
+
+
+
+	$scope.setModalData = function(comment,bathroomid) {
+		document.getElementById("modalcomment").value = comment;
+		$scope.modalBathroomid = bathroomid;
 	}
 
 
@@ -240,9 +269,13 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		$scope.loadProfileData(user);
 	}
 
-	$scope.clearComment = function() {
-		$("#commentform").css({"text":""});
+
+
+	$scope.clearLoginForm = function() {
+		$scope.input.username = "";
+		$scope.input.password = "";
 	}
+
 
 
 	/* *** SIDE NAV HIGHLIGHTING *** */

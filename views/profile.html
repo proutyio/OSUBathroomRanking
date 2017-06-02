@@ -29,28 +29,62 @@
 		</div>
 		
 		<div class="col-sm-12" style="margin-top:1%;" ng-repeat="x in usercommentdata" ng-show="hasComments">
-			<h4>{{x.BuildingName}}</h4>
-			<table class="table table-responsive table-hover">
-				<thead>
-					<tr>
-						<th>DateMade</th>
-						<th>Floor</th>
-						<th>Bathroom Description</th>
-						<th>Rating</th>
-						<th>Comment</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="col-md-2">{{ x.DateMade }}</td>
-						<td class="col-md-1">{{ x.FloorNumber }}</td>
-	    				<td class="col-md-2">{{ x.BathroomID }}</td>
-	    				<td class="col-md-1">{{ x.Rating }}</td>
-	    				<td class="col-md-6">{{ x.Comment }}</td>
-					</tr>
-				</tbody>
-			</table>
+			
+
+			<!--  -->
+			<div class="col-sm-12" >
+					
+				<div class="col-sm-11">
+					<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 2px;">
+						<div class="panel-heading">
+				   			 <div class="panel-title">
+					   			<h4 style="position:absolute;padding:0px;margin:0px;">{{x.BuildingName}}</h4>
+					   			<h5 style="position:absolute;padding:0px;margin-left:20%;">BathroomID:</h5>
+					   			<h5 style="position:absolute;padding:0px;margin-left:27%;color:#DC4405;">{{x.BathroomID}}</h5>
+
+				   			 	<div style="position:absolute;padding:0px;font-style:italic;font-size:14px;margin-left:45%;margin-top:5px;">{{x.DateMade}}</div>
+				   			 	<div style="padding:0px;margin-left:85%;"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+				   			 </div>
+				  		</div>
+						<div class="panel-body" style="font-size:16px;">
+							<div style="margin-top:;margin-left:;">&nbsp;{{x.Comment}}</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-sm-1">
+					<label class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="width:80px;margin-top:12px;" ng-click="setModalData(x.Comment,x.BathroomID)">Edit</label>
+					<label class="btn btn-danger" ng-click="deleteComment(x.BathroomID,x.Username)" style="width:80px;margin-top:5px;">Delete</label>
+				</div>
+
+			</div>
+			<!--  -->
+		
+
 		</div>
 	</div>
 
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Edit Comment</h4>
+			</div>
+			<div class="modal-body">
+				<textarea class="form-control" rows="5" id="modalcomment" ng-model="newComment"></textarea>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+				<label class="btn btn-primary" ng-click="updateComment(modalBathroomid,currentuser,newComment)" data-dismiss="modal">Save and Exit</label>
+			</div>
+		</div>
+	</div>
 </div>

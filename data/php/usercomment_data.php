@@ -10,7 +10,7 @@
 	$input = json_decode(file_get_contents('php://input'));
 
 	
-	$query = "SELECT u.Username, u.FirstName, u.LastName, u.EmailAddress, c.Comment, c.DateMade, r.Rating, c.BathroomID, b.BuildingName,b.FloorNumber FROM Users as u JOIN Comments as c ON u.Username = c.Username JOIN Bathrooms as b ON c.BathroomID = b.BathroomID JOIN Ratings as r on b.BathroomID = r.BathroomID WHERE u.Username = '$input->username' GROUP BY b.BathroomID";
+	$query = "SELECT u.Username, u.FirstName, u.LastName, u.EmailAddress, c.Comment, c.DateMade, r.Rating, c.BathroomID, b.BuildingName,b.FloorNumber FROM Users as u JOIN Comments as c ON u.Username = c.Username JOIN Bathrooms as b ON c.BathroomID = b.BathroomID JOIN Ratings as r on b.BathroomID = r.BathroomID WHERE u.Username = '$input->username' GROUP BY b.BathroomID ORDER BY c.DateMade DESC";
 
 	$result = mysqli_query($db_connection, $query);
 
