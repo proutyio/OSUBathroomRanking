@@ -18,12 +18,12 @@
 			 	<a href="" class="list-group-item" ng-repeat="x in dropdowndata" ng-click="getID(x[0])" ng-style="x[0] === bathroomID ? {'background-color':'#DC4405','color':'#fff'}:{'background-color':'','color':''}">{{x[0]}}</a>
 			</div>
 		</div>
-		<div class="col-sm-6" style="margin-top:1%;">
+		<div class="col-sm-6" style="margin-top:0%;">
 			<div class="text-center" style="margin-top:10%;margin-right:6%;">
 					<jk-rating-stars rating="starrating"></jk-rating-stars>
 					<div>{{starrating}} Stars</div>
 			</div>
-			<div style="margin-top:2%padding:0px;">
+			<div style="margin-top:0%padding:0px;margin-bottom:8%;">
 				<span><form id="commentform">
 					<div class="form-group">
 						<label for="comment"><h3><i class="fa fa-comments-o" aria-hidden="true"></i>  Comment: <span><div class="text-center" style="margin-top:15px;"><div class="label label-danger" style="font-size:16px;">{{errormessage}}</div></div></span></h3></label>
