@@ -4,120 +4,343 @@
 
 <div class="well" style="margin-top:2%;">
 	<div class="container">
-		<div class="row" style="">
-			<div class="col-sm-12" style="margin-top:2%;">
-				<h3 class="">Floor 1:</h3>
-				<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
-				<div ng-repeat="x in bathroomdata[0]"> 
-					<table class="table table-responsive table-hover">
-					    <thead>
-							<tr>
-								<th>User</th>
-								<th>Date Made</th>
-								<th>Bathroom ID</th>
-								<th>Rating</th>
-								<th>Comment</th>
-							</tr>
-					    </thead>
-					    <tbody>
-							<tr>
-								<td class="col-md-2">{{x.Username}}</td>
-								<td class="col-md-2">{{x.DateMade}}</td>
-								<td class="col-md-2">{{x.BathroomID}}</td>
-								<td class="col-md-1">{{x.Rating}}</td>
-								<td class="col-md-5"><h4>{{x.Comment}}</h4></td>
-							</tr>
-					    </tbody>
-					</table>
-				</div>
-			</div>
+		<div class="row">
+
+			<!-- BATHROOM FLOOR -->
+			<div class="col-sm-12" style="margin-top:2%;"></div>
+			<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);margin-bottom:13px;"></div>
+			<h3 class="">Floor 1:</h3>
+			<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
 			
-			<div class="col-sm-12" style="margin-top:4%;">
-				<h3 class="">Floor 2:</h3>
-				<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
-				<div ng-repeat="x in bathroomdata[1]">
-					<table class="table table-responsive table-hover">
-					    <thead>
-							<tr>
-								<th>User</th>
-								<th>Date Made</th>
-								<th>Bathroom ID</th>
-								<th>Rating</th>
-								<th>Comment</th>
-							</tr>
-					    </thead>
-					    <tbody>
-							<tr>
-								<td class="col-md-2">{{x.Username}}</td>
-								<td class="col-md-2">{{x.DateMade}}</td>
-								<td class="col-md-2">{{x.BathroomID}}</td>
-								<td class="col-md-1">{{x.Rating}}</td>
-								<td class="col-md-5"><h4>{{x.Comment}}</h4></td>
-							</tr>
-					    </tbody>
-					</table>
-				</div>
+			<div class="col-sm-12">
+				<ol class="breadcrumb" style="margin-left:1%;">
+					<li><a href="" style="font-size:20px;">Male</a></li>
+					<li class="active" style="font-size:20px;">Bathroom</li>
+				</ol>
 			</div>
 
-			<div class="col-sm-12" style="margin-top:4%;">
-				<h3 class="">Floor 3:</h3>
-				<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
-				<div ng-repeat="x in bathroomdata[2]">
-					<table class="table table-responsive table-hover">
-					    <thead>
-							<tr>
-								<th>User</th>
-								<th>Date Made</th>
-								<th>Bathroom ID</th>
-								<th>Rating</th>
-								<th>Comment</th>
-							</tr>
-					    </thead>
-					    <tbody>
-							<tr>
-								<td class="col-md-2">{{x.Username}}</td>
-								<td class="col-md-2">{{x.DateMade}}</td>
-								<td class="col-md-2">{{x.BathroomID}}</td>
-								<td class="col-md-1">{{x.Rating}}</td>
-								<td class="col-md-5"><h4>{{x.Comment}}</h4></td>
-							</tr>
-					    </tbody>
-					</table>
+			<div class="col-sm-12" ng-if="maledata[0].length == 0">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<div href="" class="list-group-item list-group-item-warning"><h4>No comments yet. Be the first!</h4></div>
 				</div>
+				<div class="col-sm-2"></div>
 			</div>
 
-			<div class="col-sm-12" style="margin-top:4%;">
-				<h3 class="">Floor 4:</h3>
-				<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
-				<div ng-repeat="x in bathroomdata[3]">
-					<table class="table table-responsive table-hover">
-					    <thead>
-							<tr>
-								<th>User</th>
-								<th>Date Made</th>
-								<th>Bathroom ID</th>
-								<th>Rating</th>
-								<th>Comment</th>
-							</tr>
-					    </thead>
-					    <tbody>
-							<tr>
-								<td class="col-md-2">{{x.Username}}</td>
-								<td class="col-md-2">{{x.DateMade}}</td>
-								<td class="col-md-2">{{x.BathroomID}}</td>
-								<td class="col-md-1">{{x.Rating}}</td>
-								<td class="col-md-5"><h4>{{x.Comment}}</h4></td>
-							</tr>
-					    </tbody>
-					</table>
+			<div ng-repeat="x in maledata[0]"> 
+				<!--  -->
+				<div class="col-sm-12" ng-if="!maledata[0].length == 0">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-8">
+						<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 5px;">
+							<div class="panel-body" style="font-size:16px;">
+								<div class="col-sm-12">
+									<div class="col-sm-3" style="padding:0px;"><h4 style="font-weight:bold;"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{x.Username}}</h4></div>
+									<div class="col-sm-3" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
+									<div class="col-sm-2"></div>
+									<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+								</div>
+								<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
 				</div>
+				<!--  -->
 			</div>
 
+			<div class="col-sm-12" style="margin-top:20px;">
+				<ol class="breadcrumb" style="margin-left:1%;">
+					<li><a href="" style="font-size:20px;">Female</a></li>
+					<li class="active" style="font-size:20px;">Bathroom</li>
+				</ol>
+			</div>
 
-<!-- ADD COMMENT / RATING -->	
+			<div class="col-sm-12" ng-if="femaledata[0].length == 0">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<div href="" class="list-group-item list-group-item-warning"><h4>No comments yet. Be the first!</h4></div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+
+			<div ng-repeat="x in femaledata[0]"> 
+				<!---->
+				<div class="col-sm-12" ng-if="!femaledata[0].length == 0">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-8">
+						<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 5px;">
+							<div class="panel-body" style="font-size:16px;">
+								<div class="col-sm-12">
+									<div class="col-sm-2" style="padding:0px;"><h4 style="font-weight:bold;"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{x.Username}}</h4></div>
+									<div class="col-sm-2" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
+									<div class="col-sm-4"></div>
+									<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+								</div>
+								<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+				<!--  -->
+			</div>
+			<!-- BATHROOM FLOOR END -->
+
+
+
+			<!-- BATHROOM FLOOR -->
+			<div class="col-sm-12" style="margin-top:5%;"></div>
+			<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);margin-bottom:13px;"></div>
+			<h3 class="">Floor 2:</h3>
+			<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
+			
+			<div class="col-sm-12">
+				<ol class="breadcrumb" style="margin-left:1%;">
+					<li><a href="" style="font-size:20px;">Male</a></li>
+					<li class="active" style="font-size:20px;">Bathroom</li>
+				</ol>
+			</div>
+
+			<div class="col-sm-12" ng-if="maledata[1].length == 0">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<div href="" class="list-group-item list-group-item-warning"><h4>No comments yet. Be the first!</h4></div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+
+			<div ng-repeat="x in maledata[1]"> 
+				<!--  -->
+				<div class="col-sm-12" ng-if="!maledata[1].length == 0">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-8">
+						<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 5px;">
+							<div class="panel-body" style="font-size:16px;">
+								<div class="col-sm-12">
+									<div class="col-sm-3" style="padding:0px;"><h4 style="font-weight:bold;"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{x.Username}}</h4></div>
+									<div class="col-sm-3" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
+									<div class="col-sm-2"></div>
+									<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+								</div>
+								<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+				<!--  -->
+			</div>
+
+			<div class="col-sm-12" style="margin-top:20px;">
+				<ol class="breadcrumb" style="margin-left:1%;">
+					<li><a href="" style="font-size:20px;">Female</a></li>
+					<li class="active" style="font-size:20px;">Bathroom</li>
+				</ol>
+			</div>
+
+			<div class="col-sm-12" ng-if="femaledata[1].length == 0">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<div href="" class="list-group-item list-group-item-warning"><h4>No comments yet. Be the first!</h4></div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+
+			<div ng-repeat="x in femaledata[1]"> 
+				<!---->
+				<div class="col-sm-12" ng-if="!femaledata[1].length == 0">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-8">
+						<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 5px;">
+							<div class="panel-body" style="font-size:16px;">
+								<div class="col-sm-12">
+									<div class="col-sm-2" style="padding:0px;"><h4 style="font-weight:bold;"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{x.Username}}</h4></div>
+									<div class="col-sm-2" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
+									<div class="col-sm-4"></div>
+									<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+								</div>
+								<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+				<!--  -->
+			</div>
+			<!-- BATHROOM FLOOR END -->
+
+
+
+			<!-- BATHROOM FLOOR -->
+			<div class="col-sm-12" style="margin-top:5%;"></div>
+			<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);margin-bottom:13px;"></div>
+			<h3 class="">Floor 3:</h3>
+			<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
+			
+			<div class="col-sm-12">
+				<ol class="breadcrumb" style="margin-left:1%;">
+					<li><a href="" style="font-size:20px;">Male</a></li>
+					<li class="active" style="font-size:20px;">Bathroom</li>
+				</ol>
+			</div>
+
+			<div class="col-sm-12" ng-if="maledata[2].length == 0">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<div href="" class="list-group-item list-group-item-warning"><h4>No comments yet. Be the first!</h4></div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+
+			<div ng-repeat="x in maledata[2]"> 
+				<!--  -->
+				<div class="col-sm-12" ng-if="!maledata[2].length == 0">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-8">
+						<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 5px;">
+							<div class="panel-body" style="font-size:16px;">
+								<div class="col-sm-12">
+									<div class="col-sm-3" style="padding:0px;"><h4 style="font-weight:bold;"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{x.Username}}</h4></div>
+									<div class="col-sm-3" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
+									<div class="col-sm-2"></div>
+									<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+								</div>
+								<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+				<!--  -->
+			</div>
+
+			<div class="col-sm-12" style="margin-top:20px;">
+				<ol class="breadcrumb" style="margin-left:1%;">
+					<li><a href="" style="font-size:20px;">Female</a></li>
+					<li class="active" style="font-size:20px;">Bathroom</li>
+				</ol>
+			</div>
+
+			<div class="col-sm-12" ng-if="femaledata[2].length == 0">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<div href="" class="list-group-item list-group-item-warning"><h4>No comments yet. Be the first!</h4></div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+
+			<div ng-repeat="x in femaledata[2]"> 
+				<!---->
+				<div class="col-sm-12" ng-if="!femaledata[2].length == 0">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-8">
+						<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 5px;">
+							<div class="panel-body" style="font-size:16px;">
+								<div class="col-sm-12">
+									<div class="col-sm-2" style="padding:0px;"><h4 style="font-weight:bold;"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{x.Username}}</h4></div>
+									<div class="col-sm-2" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
+									<div class="col-sm-4"></div>
+									<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+								</div>
+								<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+				<!--  -->
+			</div>
+			<!-- BATHROOM FLOOR END -->
+
+
+
+			<!-- BATHROOM FLOOR -->
+			<div class="col-sm-12" style="margin-top:5%;"></div>
+			<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);margin-bottom:13px;"></div>
+			<h3 class="">Floor 4:</h3>
+			<div class="col-sm-12" style="border:1px solid rgba(0,0,0,.3);"></div>
+			
+			<div class="col-sm-12">
+				<ol class="breadcrumb" style="margin-left:1%;">
+					<li><a href="" style="font-size:20px;">Male</a></li>
+					<li class="active" style="font-size:20px;">Bathroom</li>
+				</ol>
+			</div>
+
+			<div class="col-sm-12" ng-if="maledata[3].length == 0">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<div href="" class="list-group-item list-group-item-warning"><h4>No comments yet. Be the first!</h4></div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+
+			<div ng-repeat="x in maledata[3]"> 
+				<!--  -->
+				<div class="col-sm-12" ng-if="!maledata[3].length == 0">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-8">
+						<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 5px;">
+							<div class="panel-body" style="font-size:16px;">
+								<div class="col-sm-12">
+									<div class="col-sm-3" style="padding:0px;"><h4 style="font-weight:bold;"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{x.Username}}</h4></div>
+									<div class="col-sm-3" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
+									<div class="col-sm-2"></div>
+									<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+								</div>
+								<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+				<!--  -->
+			</div>
+
+			<div class="col-sm-12" style="margin-top:20px;">
+				<ol class="breadcrumb" style="margin-left:1%;">
+					<li><a href="" style="font-size:20px;">Female</a></li>
+					<li class="active" style="font-size:20px;">Bathroom</li>
+				</ol>
+			</div>
+
+			<div class="col-sm-12" ng-if="femaledata[3].length == 0">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<div href="" class="list-group-item list-group-item-warning"><h4>No comments yet. Be the first!</h4></div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+
+			<div ng-repeat="x in femaledata[3]"> 
+				<!---->
+				<div class="col-sm-12" ng-if="!femaledata[3].length == 0">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-8">
+						<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 5px;">
+							<div class="panel-body" style="font-size:16px;">
+								<div class="col-sm-12">
+									<div class="col-sm-2" style="padding:0px;"><h4 style="font-weight:bold;"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{x.Username}}</h4></div>
+									<div class="col-sm-2" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
+									<div class="col-sm-4"></div>
+									<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
+								</div>
+								<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+				<!--  -->
+			</div>
+			<!-- BATHROOM FLOOR END -->
+
+				
+			<!-- ADD COMMENT / RATING	 -->
 			<comment-form></comment-form>
 
-			
+
 		</div>
 	</div>
 </div>
