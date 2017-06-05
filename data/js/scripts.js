@@ -121,14 +121,19 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 
 	$scope.deleteComment = function(bathroomid,username) {
 		var user = {'bathroomid': bathroomid,'username': username};
-		$http.post('data//php//delete_comment.php',user).then(function(json) { $scope.loadProfileData(user); });
-		$scope.loadBathroomData($scope.currentbuilding,$scope.currentbuildingfloors);
+		$http.post('data//php//delete_comment.php',user).then(function(json) { 
+			$scope.loadProfileData(user); 
+			$scope.loadBathroomData($scope.currentbuilding,$scope.currentbuildingfloors);
+		});
 	}
 
 
 	$scope.updateComment = function(bathroomid,username,comment) {
 		var user = {'bathroomid':bathroomid,'username':$scope.currentuser,'comment':comment};
-		$http.post('data//php//update_comment.php',user).then(function(json) { $scope.loadProfileData(user); });
+		$http.post('data//php//update_comment.php',user).then(function(json) { 
+			$scope.loadProfileData(user); 
+			$scope.loadBathroomData($scope.currentbuilding,$scope.currentbuildingfloors);
+		});
 	}
 
 
