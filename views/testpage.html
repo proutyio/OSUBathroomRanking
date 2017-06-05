@@ -1,30 +1,29 @@
-<h2> Page to test different components I'm working on </h2>
+<h4>Test Page</h4>
 
 
-
-
-<!--  -->
-<div class="col-sm-12" >
-	<div class="col-sm-1"></div>
-	<div class="col-sm-8">
-		<div class="panel panel-default" style="box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 2px;">
-			<div class="panel-heading">
-	   			 <h3 class="panel-title">{{x.BuildingName}}</h3>
-	  		</div>
-
-			<div class="panel-body" style="font-size:16px;">	
-				<div class="col-sm-12">
-					<div class="col-sm-3" style="padding:0px;"><h4 style="font-weight:bold;">{{x.BathroomID}}</h4></div>
-					<div class="col-sm-3" style="font-style:italic;font-size:12px;margin-top:1.5%;">{{x.DateMade}}</div>
-					<div class="col-sm-2"></div>
-					<div class="col-sm-4"><jk-rating-stars rating=x.Rating read-only=true style="font-size:4px;"></jk-rating-stars></div>
-				</div>
-				
-				<div style="margin-top:6%;margin-left:1.5%;">&nbsp;{{x.Comment}}</div>
-
-			</div>
-		</div>
+<div class="col-sm-12">
+	<div class="col-sm-5"></div>
+	<div class="col-sm-2">
+		<table class="table table-responsive table-hover" style="border:none;box-shadow:none;border-style:none;text-align:center;">
+		    <tbody>
+		        <tr>
+		          	<th>Username</th>
+		            <td style="text-align:center;border-style:none;border:none;">{{userdetailsdata[0].Username}}</td>
+		        </tr>
+		        <tr>
+		          	<th>Email</th>
+		            <td>{{userdetailsdata[0].EmailAddress}}</td>
+		        </tr>
+		     	<tr>
+		        	<th>Real Name</th>
+		        	<td>{{userdetailsdata[0].FirstName}} {{userdetailsdata[0].LastName}}</td>
+		       </tr>
+		       <tr>
+		        	<th>Signup Date</th>
+		        	<td>{{userdetailsdata[0].SignUpDate}}</td>
+		       </tr>
+		    </tbody>
+		</table>
 	</div>
-	<div class="col-sm-3"></div>
+	<div class="col-sm-5"></div>
 </div>
-<!--  -->

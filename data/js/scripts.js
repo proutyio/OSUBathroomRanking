@@ -13,6 +13,8 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.starrating = 0;
 	$scope.modalComment = "";
 	$scope.modalBathroomid = "";
+	$scope.currentbuilding = "";
+	$scope.currentbuildingfloors =""; 
 	
 	$scope.loginVisible = true;
 	$scope.profileVisible = false;
@@ -107,7 +109,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 					else {
 						$http.post('data//php//insert_comment.php',input).then(function(json) {
 							$http.post('data//php//insert_rating.php',input).then(function(json) {
-								$scope.loadBathroomData($scope.currentbuilding,$scope.currentbuildingfloors); 
+								$scope.loadBathroom($scope.currentbuilding,$scope.currentbuildingfloors); 
 							});
 						});
 					}
@@ -120,6 +122,7 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 	$scope.deleteComment = function(bathroomid,username) {
 		var user = {'bathroomid': bathroomid,'username': username};
 		$http.post('data//php//delete_comment.php',user).then(function(json) { $scope.loadProfileData(user); });
+		$scope.loadBathroomData($scope.currentbuilding,$scope.currentbuildingfloors);
 	}
 
 
@@ -171,10 +174,15 @@ app.controller('controller',['$scope','$location','$http',function($scope,$locat
 		$scope.loadDropdownData(building);
 		$scope.buildingtext = buildingname;
 		$scope.bathroomsVisible = true;
-		$location.path('/bathrooms');
 		$scope.bathroomID = "";
 		$scope.starrating = 0;
 		$scope.comment = "";
+	}
+
+
+	$scope.loadBathroom = function(building, floors) { 
+		$scope.loadBathroomData(building,floors);// 
+		$location.path('/bathrooms');
 	}
 
 

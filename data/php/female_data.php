@@ -5,9 +5,7 @@
 	if (!$db_connection) {
 		die('Could not connect: ' . mysql_error());
 	}
-
 	$input = json_decode(file_get_contents('php://input'));
-
 	$data = array();
 
 	for ($x = 1; $x <= $input->floors; $x++) {
@@ -23,11 +21,8 @@
 		$data[] = $temp;
 
 		unset($temp);
-		mysqli_free_result($result);
-	    
+		mysqli_free_result($result);   
 	}
-
-
     print json_encode($data);
 
     mysql_free_result($result);

@@ -14,10 +14,37 @@
 
 	<div class="row text-center" ng-show="profileVisible" >
 		<div class="col-sm-12"><i class="fa fa-user-circle-o fa-5x" aria-hidden="true" style=""></i></div>
+		<div class="col-sm-12">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<table class="table table-responsive table-hover" style="margin-left:11%;border:none;box-shadow:none;border-style:none;">
+				    <tbody style="border-style:none;border:none;">
+				        <tr style="border-style:none;border:none;">
+				          	<th style="text-align:right; border-style:none;border:none;">Username</th>
+				            <td style="text-align:left; border-style:none;border:none;">{{userdetailsdata[0].Username}}</td>
+				        </tr>
+				        <tr>
+				          	<th style="text-align:right;">Email</th>
+				            <td style="text-align:left;">{{userdetailsdata[0].EmailAddress}}</td>
+				        </tr>
+				     	<tr>
+				        	<th style="text-align:right;">Real Name</th>
+				        	<td style="text-align:left;">{{userdetailsdata[0].FirstName}} {{userdetailsdata[0].LastName}}</td>
+				       </tr>
+				       <tr>
+				        	<th style="text-align:right;">Signup Date</th>
+				        	<td style="text-align:left;">{{userdetailsdata[0].SignUpDate}}</td>
+				       </tr>
+				    </tbody>
+				</table>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<!-- <div class="col-sm-12"><i class="fa fa-user-circle-o fa-5x" aria-hidden="true" style=""></i></div>
 		<div class="col-sm-12"><h5 style="margin-top:1%;">Username: &nbsp;&nbsp;{{userdetailsdata[0].Username}}</h5></div>
 		<div class="col-sm-12"><h5>Email: &nbsp;&nbsp;{{userdetailsdata[0].EmailAddress}}</h5></div>
 		<div class="col-sm-12"><h5>Real name: &nbsp;&nbsp;{{userdetailsdata[0].FirstName}} {{userdetailsdata[0].LastName}}</h5></div>
-		<div class="col-sm-12"><h5>Signup Date: &nbsp;&nbsp;{{userdetailsdata[0].SignUpDate}}</h5></div>
+		<div class="col-sm-12"><h5>Signup Date: &nbsp;&nbsp;{{userdetailsdata[0].SignUpDate}}</h5></div> -->
 	</div>
 
 	<div class="row" ng-show="profileVisible">
